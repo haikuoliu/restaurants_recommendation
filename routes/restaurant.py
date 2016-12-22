@@ -8,8 +8,8 @@ from . import routes
 @crossdomain(origin='*')
 def recommend():
     try:
-        lat = request.form['lat']
-        lng = request.form['lng']
+        lat = request.form['latitude']
+        lng = request.form['longitude']
         uid = request.form['uid']
         print lat
         print lng
@@ -26,22 +26,25 @@ def recommend():
         #     restaurant_info = {}
         #     restaurant_infos.append(restaurant_info)
         ret = {"status": True}
+        if uid == "EMPTY_UID":
+            ret["restaurant_infos"] = []
+            return json.dumps(ret)
         restaurant_infos = [
             {
                 "rid": "A",
                 "name": "restaurant A",
-                "location": "local A",
-                "lat": 1,
-                "lng": 2,
-                "description": "description A"
+                "address": "addr A",
+                "latitude": 1,
+                "longitude": 2,
+                "picUrl": "http://A1"
             },
             {
                 "rid": "B",
                 "name": "restaurant B",
-                "location": "local B",
-                "lat": 3,
-                "lng": 4,
-                "description": "description B"
+                "address": "local B",
+                "latitude": 3,
+                "longitude": 4,
+                "picUrl": "description B"
             }
         ]
         ret["restaurant_infos"] = restaurant_infos
@@ -57,9 +60,7 @@ def recommend():
 def search():
     if request.method == 'POST':
         try:
-            uid = request.form['uid']
             keyword = request.form['keyword']
-            print uid
             print keyword
             # recommend logic
             ret = {"status": True}
@@ -67,18 +68,18 @@ def search():
                 {
                     "rid": "A",
                     "name": "restaurant A",
-                    "location": "local A",
-                    "lat": 1,
-                    "lng": 2,
-                    "description": "description A"
+                    "address": "addr A",
+                    "latitude": 1,
+                    "longitude": 2,
+                    "picUrl": "http://A1"
                 },
                 {
                     "rid": "B",
                     "name": "restaurant B",
-                    "location": "local B",
-                    "lat": 3,
-                    "lng": 4,
-                    "description": "description B"
+                    "address": "local B",
+                    "latitude": 3,
+                    "longitude": 4,
+                    "picUrl": "description B"
                 }
             ]
             ret["restaurant_infos"] = restaurant_infos
@@ -94,34 +95,38 @@ def search():
 @crossdomain(origin='*')
 def recommend_realtime():
     try:
-        lat = request.form['lat']
-        lng = request.form['lng']
-        uid = request.form['uid']
-        print lat
-        print lng
-        print uid
-        # db = get_db_connection()
-        # restaurant_collection = db.restaurant
-        # query_results = restaurant_collection.find_one({"rid": rid})
-        # get several rids here by recommend algorithm.
+        if request.method == 'POST':
+            lat = request.form['latitude']
+            lng = request.form['longitude']
+            uid = request.form['uid']
+            print lat
+            print lng
+            print uid
+            # db = get_db_connection()
+            # restaurant_collection = db.restaurant
+            # query_results = restaurant_collection.find_one({"rid": rid})
+            # get several rids here by recommend algorithm.
 
-        rids = [1, 2, 3]
-        # for rid in rids:
-        #     # search in db and get detailed info of restaurant
-        #     restaurant_info = {}
-        #     restaurant_infos.append(restaurant_info)
-        ret = {"status": True}
-        restaurant_info = {
-            "rid": "B",
-            "name": "restaurant B",
-            "location": "local B",
-            "lat": 3,
-            "lng": 4,
-            "description": "description B"
-        }
-        ret["restaurant_infos"] = restaurant_info
-        print ret
-        return json.dumps(ret)
+            rids = [1, 2, 3]
+            # for rid in rids:
+            #     # search in db and get detailed info of restaurant
+            #     restaurant_info = {}
+            #     restaurant_infos.append(restaurant_info)
+            ret = {"status": True}
+            if uid == "EMPTY_UID":
+                ret["restaurant_info"] = {}
+                return json.dumps(ret)
+            restaurant_info = {
+                "rid": "B",
+                "name": "restaurant B",
+                "address": "local B",
+                "latitude": 3,
+                "longitude": 4,
+                "picUrl": "description B"
+            }
+            ret["restaurant_info"] = restaurant_info
+            print ret
+            return json.dumps(ret)
     except Exception, e:
         print e
         ret = {"status": False}
