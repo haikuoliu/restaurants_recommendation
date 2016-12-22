@@ -11,9 +11,9 @@ from utils.connect_db import *
 def user_register():
     if request.method == 'POST':
         try:
-            username = request.args.get('username')
-            email = request.args.get('email')
-            password = request.args.get('password')
+            username = request.form['username']
+            email = request.form['email']
+            password = request.form['password']
             print username
             print email
             print password
