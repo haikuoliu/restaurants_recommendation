@@ -1,6 +1,3 @@
-# from utils.connect_db import *
-from utils.constants_funcs import *
-from utils.time_format import *
 from utils.crossdomain import *
 import json
 from . import routes
@@ -12,24 +9,41 @@ from utils.connect_db import *
 @routes.route('/api/users/register', methods=['GET', 'POST'])
 @crossdomain(origin='*')
 def user_register():
-    if request.method == 'GET':
+    if request.method == 'POST':
         try:
-            user_name = request.args.get('name')
-            user_email = request.args.get('email')
-            user_pwd = request.args.get('pwd')
-            user = {"user_name": user_name,
-                    "user_email": user_email,
-                    "user_pwd": user_pwd,
-                    "register_date": datetime.datetime.utcnow()}
-            db = get_db_connection()
-            user_collection = db.user
-            user_collection.insert_one(user).inserted_id
-            ret = {"Status": "OK"}
+            username = request.args.get('username')
+            email = request.args.get('email')
+            password = request.args.get('password')
+            user = {
+                    "username": username,
+                    "email": email,
+                    "password": password
+            }
+            # db = get_db_connection()
+            # user_collection = db.user
+            # return uid and profile.
+            # user_collection.insert_one(user).inserted_id
+
+            is_exists = False
+            if is_exists:
+                ret = {"Status": False}
+            else:
+                user_profile = {
+                    "uid": "123",
+                    "username": "liuhaikuo",
+                    "password": "pwd",
+                    "tag": ["food catagory1", "food catagory2"],
+                    "search_history": ["keyword1", "keyword2"]
+                }
+                ret = {"Status": True}
+                ret["user_profile"] = user_profile
             print ret
             return json.dumps(ret)
+
         except Exception, e:
             print e
-            return default_error_msg(e.message)
+            ret = {"Status": False}
+            return json.dumps(ret)
 
 
 # User login
@@ -37,19 +51,29 @@ def user_register():
 @routes.route('/api/users/login', methods=['GET', 'POST'])
 @crossdomain(origin='*')
 def user_login():
-    if request.method == 'GET':
+    if request.method == 'POST':
         try:
-            user_email = request.args.get('email')
-            user_pwd = request.args.get('pwd')
+            email = request.args.get('email')
+            password = request.args.get('password')
             db = get_db_connection()
             user_collection = db.user
-            query_results = user_collection.find_one({"user_name": user_email, "user_pwd": user_pwd})
-            ret = {"Status": "OK"}
-            if query_results != None:
-                ret["login"] = True
+            query_results = user_collection.find_one({"email": email, "password": password})
+            is_success = True
+            if is_success:
+                user_profile = {
+                    "uid": "123",
+                    "username": "liuhaikuo",
+                    "password": "pwd",
+                    "tag": ["food catagory1", "food catagory2"],
+                    "search_history": ["keyword1", "keyword2"]
+                }
+                ret = {"Status": True}
+                ret["user_profile": user_profile]
             else:
-                ret["login"] = False
+                ret = {"Status": False}
+            print ret
             return json.dumps(ret)
         except Exception, e:
             print e
-            return default_error_msg(e.message)
+            ret = {"Status": False}
+            return json.dumps(ret)
