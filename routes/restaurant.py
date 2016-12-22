@@ -31,12 +31,13 @@ def recommend():
             return json.dumps(ret)
         restaurant_infos = [
             {
-                "rid": "A",
-                "name": "restaurant A",
+                "rid": "reyes-deli-and-grocery-brooklyn",
+                "name": "Reyes Deli & Grocery",
                 "address": "addr A",
-                "latitude": 1,
-                "longitude": 2,
-                "picUrl": "http://A1"
+                "latitude": 40.75033,
+                "longitude": -73.98531,
+                "picUrl": "http://A1",
+                "overallRating": 4.5
             },
             {
                 "rid": "B",
@@ -44,7 +45,8 @@ def recommend():
                 "address": "local B",
                 "latitude": 3,
                 "longitude": 4,
-                "picUrl": "description B"
+                "picUrl": "description B",
+                "overallRating": 5.0
             }
         ]
         ret["restaurant_infos"] = restaurant_infos
@@ -66,21 +68,23 @@ def search():
             ret = {"status": True}
             restaurant_infos = [
                 {
-                    "rid": "A",
-                    "name": "restaurant A",
+                    "rid": "reyes-deli-and-grocery-brooklyn",
+                    "name": "Reyes Deli & Grocery",
                     "address": "addr A",
-                    "latitude": 1,
-                    "longitude": 2,
-                    "picUrl": "http://A1"
+                    "latitude": 40.75033,
+                    "longitude": -73.98531,
+                    "picUrl": "http://A1",
+                    "overallRating": 4.5
                 },
                 {
-                    "rid": "B",
-                    "name": "restaurant B",
+                    "rid": "coffee-project-new-york-new-york",
+                    "name": "Coffee Project New York",
                     "address": "local B",
-                    "latitude": 3,
-                    "longitude": 4,
-                    "picUrl": "description B"
-                }
+                    "latitude": 40.7274823,
+                    "longitude": -73.9902387,
+                    "picUrl": "description B",
+                    "overallRating": 5.0
+            }
             ]
             ret["restaurant_infos"] = restaurant_infos
             print ret
@@ -117,12 +121,13 @@ def recommend_realtime():
                 ret["restaurant_info"] = {}
                 return json.dumps(ret)
             restaurant_info = {
-                "rid": "B",
-                "name": "restaurant B",
+                "rid": "coffee-project-new-york-new-york",
+                "name": "Coffee Project New York",
                 "address": "local B",
-                "latitude": 3,
-                "longitude": 4,
-                "picUrl": "description B"
+                "latitude": 40.7274823,
+                "longitude": -73.9902387,
+                "picUrl": "description B",
+                "overallRating": 5.0
             }
             ret["restaurant_info"] = restaurant_info
             print ret
