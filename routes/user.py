@@ -56,8 +56,8 @@ def user_register():
 def user_login():
     if request.method == 'POST':
         try:
-            email = request.args.get('email')
-            password = request.args.get('password')
+            email = request.form['email']
+            password = request.form['password']
             db = get_db_connection()
             user_collection = db.user
             query_results = user_collection.find_one({"email": email, "password": password})
