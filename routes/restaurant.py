@@ -90,7 +90,6 @@ def search():
             return json.dumps(ret)
 
 
-# http://0.0.0.0:8080/api/restaurant/recommend/
 @routes.route('/api/restaurant/recommend_realtime', methods=['GET', 'POST'])
 @crossdomain(origin='*')
 def recommend_realtime():
