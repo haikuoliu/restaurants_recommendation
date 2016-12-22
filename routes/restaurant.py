@@ -36,16 +36,16 @@ def recommend():
                 "address": "addr A",
                 "latitude": 40.75033,
                 "longitude": -73.98531,
-                "picUrl": "http://A1",
+                "picUrl": "https://www.omnihotels.com/-/media/images/hotels/homrst/restaurants/homrst-omni-homestead-resort-jeffersons-restaurant-2.jpg",
                 "overallRating": 4.5
             },
             {
-                "rid": "B",
-                "name": "restaurant B",
+                "rid": "coffee-project-new-york-new-york",
+                "name": "Coffee Project New York",
                 "address": "local B",
-                "latitude": 3,
-                "longitude": 4,
-                "picUrl": "description B",
+                "latitude": 40.7274823,
+                "longitude": -73.9902387,
+                "picUrl": "http://assets.sheratonseattle.com/lps/assets/u/she460re-119596-Daily-Grill-Restaurant.jpg",
                 "overallRating": 5.0
             }
         ]
@@ -73,7 +73,7 @@ def search():
                     "address": "addr A",
                     "latitude": 40.75033,
                     "longitude": -73.98531,
-                    "picUrl": "http://A1",
+                    "picUrl": "https://www.omnihotels.com/-/media/images/hotels/homrst/restaurants/homrst-omni-homestead-resort-jeffersons-restaurant-2.jpg",
                     "overallRating": 4.5
                 },
                 {
@@ -82,7 +82,7 @@ def search():
                     "address": "local B",
                     "latitude": 40.7274823,
                     "longitude": -73.9902387,
-                    "picUrl": "description B",
+                    "picUrl": "http://assets.sheratonseattle.com/lps/assets/u/she460re-119596-Daily-Grill-Restaurant.jpg",
                     "overallRating": 5.0
             }
             ]
@@ -126,7 +126,7 @@ def recommend_realtime():
                 "address": "local B",
                 "latitude": 40.7274823,
                 "longitude": -73.9902387,
-                "picUrl": "description B",
+                "picUrl": "http://assets.sheratonseattle.com/lps/assets/u/she460re-119596-Daily-Grill-Restaurant.jpg",
                 "overallRating": 5.0
             }
             ret["restaurant_info"] = restaurant_info
