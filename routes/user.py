@@ -14,6 +14,9 @@ def user_register():
             username = request.args.get('username')
             email = request.args.get('email')
             password = request.args.get('password')
+            print username
+            print email
+            print password
             user = {
                     "username": username,
                     "email": email,
