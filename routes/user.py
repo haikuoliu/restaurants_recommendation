@@ -71,7 +71,7 @@ def user_login():
                     "search_history": ["keyword1", "keyword2"]
                 }
                 ret = {"status": True}
-                ret["user_profile": user_profile]
+                ret["user_profile"] = user_profile
             else:
                 ret = {"status": False}
             print ret
