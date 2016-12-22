@@ -24,7 +24,7 @@ def recommend():
                 # search in db and get detailed info of restaurant
                 restaurant_info = {}
                 restaurant_infos.append(restaurant_info)
-            ret = {"Status": True}
+            ret = {"status": True}
             restaurant_infos = {
                 {
                     "rid": "A",
@@ -48,7 +48,7 @@ def recommend():
             return json.dumps(ret)
         except Exception, e:
             print e
-            ret = {"Status": False}
+            ret = {"status": False}
             return json.dumps(ret)
 
 
@@ -65,5 +65,5 @@ def search():
             return json.dumps(ret)
         except Exception, e:
             print e
-            ret = {"Status": False}
+            ret = {"status": False}
             return json.dumps(ret)

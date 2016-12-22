@@ -26,7 +26,7 @@ def user_register():
 
             is_exists = False
             if is_exists:
-                ret = {"Status": False}
+                ret = {"status": False}
             else:
                 user_profile = {
                     "uid": "123",
@@ -35,14 +35,14 @@ def user_register():
                     "tag": ["food catagory1", "food catagory2"],
                     "search_history": ["keyword1", "keyword2"]
                 }
-                ret = {"Status": True}
+                ret = {"status": True}
                 ret["user_profile"] = user_profile
             print ret
             return json.dumps(ret)
 
         except Exception, e:
             print e
-            ret = {"Status": False}
+            ret = {"status": False}
             return json.dumps(ret)
 
 
@@ -67,13 +67,13 @@ def user_login():
                     "tag": ["food catagory1", "food catagory2"],
                     "search_history": ["keyword1", "keyword2"]
                 }
-                ret = {"Status": True}
+                ret = {"status": True}
                 ret["user_profile": user_profile]
             else:
-                ret = {"Status": False}
+                ret = {"status": False}
             print ret
             return json.dumps(ret)
         except Exception, e:
             print e
-            ret = {"Status": False}
+            ret = {"status": False}
             return json.dumps(ret)
