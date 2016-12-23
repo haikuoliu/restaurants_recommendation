@@ -61,7 +61,7 @@ def recommend():
                 "longitude": tmp["longitude"],
                 "picUrl": tmp["picUrl"],
                 "overallRating": tmp["overallRating"],
-                "catagory": tmp["catagory"]
+                # "catagory": tmp["catagory"]
             }
             restaurant_infos.append(restaurant_info)
             # print restaurant_info
@@ -84,26 +84,40 @@ def search():
             print keyword
             # recommend logic
             ret = {"status": True}
-            restaurant_infos = [
-                {
-                    "rid": "reyes-deli-and-grocery-brooklyn",
-                    "name": "Reyes Deli & Grocery",
-                    "address": "addr A",
-                    "latitude": 40.75033,
-                    "longitude": -73.98531,
-                    "picUrl": "https://www.omnihotels.com/-/media/images/hotels/homrst/restaurants/homrst-omni-homestead-resort-jeffersons-restaurant-2.jpg",
-                    "overallRating": 4.5
-                },
-                {
-                    "rid": "coffee-project-new-york-new-york",
-                    "name": "Coffee Project New York",
-                    "address": "local B",
-                    "latitude": 40.7274823,
-                    "longitude": -73.9902387,
-                    "picUrl": "http://assets.sheratonseattle.com/lps/assets/u/she460re-119596-Daily-Grill-Restaurant.jpg",
-                    "overallRating": 5.0
+            # restaurant_infos = [
+            #     {
+            #         "rid": "reyes-deli-and-grocery-brooklyn",
+            #         "name": "Reyes Deli & Grocery",
+            #         "address": "addr A",
+            #         "latitude": 40.75033,
+            #         "longitude": -73.98531,
+            #         "picUrl": "https://www.omnihotels.com/-/media/images/hotels/homrst/restaurants/homrst-omni-homestead-resort-jeffersons-restaurant-2.jpg",
+            #         "overallRating": 4.5
+            #     },
+            #     {
+            #         "rid": "coffee-project-new-york-new-york",
+            #         "name": "Coffee Project New York",
+            #         "address": "local B",
+            #         "latitude": 40.7274823,
+            #         "longitude": -73.9902387,
+            #         "picUrl": "http://assets.sheratonseattle.com/lps/assets/u/she460re-119596-Daily-Grill-Restaurant.jpg",
+            #         "overallRating": 5.0
+            #     }
+            # ]
+            restaurant_infos = []
+            rows = search(keyword)
+            for tmp in rows:
+                restaurant_info = {
+                    "rid": tmp["item_id"],
+                    "name": tmp["item_name"],
+                    "address": tmp["address"],
+                    "latitude": tmp["latitude"],
+                    "longitude": tmp["longitude"],
+                    "picUrl": tmp["picUrl"],
+                    "overallRating": tmp["overallRating"],
+                    # "catagory": tmp["catagory"]
                 }
-            ]
+                restaurant_infos.append(restaurant_info)
             ret["restaurant_infos"] = restaurant_infos
             print ret
             return json.dumps(ret)

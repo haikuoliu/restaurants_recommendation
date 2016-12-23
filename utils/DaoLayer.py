@@ -5,7 +5,7 @@ client = MongoClient()
 # client set up
 db = client.test
 userMongoData = db.userMongoData
-businessMongoData1 = db.businessMongoData2
+businessMongoData2 = db.businessMongoData2
 
 from bson.objectid import ObjectId
 def getByUser_id(findId):
@@ -20,11 +20,13 @@ def getByRestaurant_id(findId):
     # the userColllection like the table which store the data of user
     try:
 #         document = businessMongoData1.find({"item_id":{$regex:findId,$options:"$i"}})
-        document = businessMongoData1.find_one({"item_id":{'$regex':findId}})
+        document = businessMongoData2.find_one({"item_id":{'$regex':findId}})
         return document
     except Exception:
         return "id incorrect"
-def search(keyword)
+
+
+def search(keyword):
     list = []
     count = 0
     for doc in businessMongoData2.find({"item_name":{'$regex':keyword}}):
@@ -90,5 +92,5 @@ data = {
 #
 #
 # print updateData("")
-print businessMongoData1.count()
+print businessMongoData2.count()
 print getByRestaurant_id("6KON3CR5ZEM5RMYKLPCFCW")
