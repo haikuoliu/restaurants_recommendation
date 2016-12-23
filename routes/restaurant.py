@@ -84,8 +84,8 @@ def search():
     if request.method == 'POST':
         try:
             keyword = request.form['keyword']
-            lat = request.form['latitude']
-            lng = request.form['longitude']
+            lat = float(request.form['latitude'])
+            lng = float(request.form['longitude'])
             # uid = request.form['uid']
             # print uid
             print keyword
