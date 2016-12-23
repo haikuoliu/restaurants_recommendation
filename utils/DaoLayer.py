@@ -8,7 +8,7 @@ from bson.objectid import ObjectId
 def getByUser_id(user_id):
     # the userColllection like the table which store the data of user
     try:
-        document = userCollection.find_one({'user_id':user_id})
+        document = userCollection.find_one({"user_id":user_id})
         return document
     except Exception:
         return "id incorrect"
@@ -37,7 +37,7 @@ def updateData(user_id, target,value):
         return "update fail"
 
 
-print getByUser_id("18kPq7GPye-YQ3LyKyAZPw")
+print getByUser_id("4U9kSBLuBDU391x6bxU-YA")
 
 print ""
 
