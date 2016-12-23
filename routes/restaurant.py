@@ -49,12 +49,13 @@ def recommend():
         #         "overallRating": 5.0
         #     }
         # ]
-        rids = getUser2ItemRecommendation(uid, 2)
+        items = getUser2ItemRecommendation(uid, 2)
+        items = json.loads(items)
         restaurant_infos = []
-        for rid in rids:
-            restaurant_info = getByRestaurant_id(rid)
+        for item in items:
+            restaurant_info = getByRestaurant_id(item)
             restaurant_infos.append(restaurant_info)
-            print rid
+            print item
             print restaurant_info
         ret["restaurant_infos"] = restaurant_infos
         print ret
