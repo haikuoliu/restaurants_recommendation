@@ -13,7 +13,7 @@ for eachLine in fin:
         js = json.loads(line)
     except Exception, e:
         continue
-    userTag.insert_one(js)
+    businessMongoData2.insert_one(js)
     if count>100:
         print 'processing'
         count = 0
