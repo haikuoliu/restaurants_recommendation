@@ -3,13 +3,13 @@ from pymongo import MongoClient
 client = MongoClient()
 # client set up
 db = client.test
-userCollection = db.userMongoData
+userMongoData = db.userMongoData
 
 from bson.objectid import ObjectId
 def getByUser_id(findId):
     # the userColllection like the table which store the data of user
     try:
-        document = userCollection.find_one({"user_id":findId})
+        document = userMongoData.find_one({"user_id":findId})
         return document
     except Exception:
         return "id incorrect"
