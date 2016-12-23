@@ -18,7 +18,7 @@ def getByUser_id(findId):
 def getByRestaurant_id(findId):
     # the userColllection like the table which store the data of user
     try:
-        document = businessMongoData2.find_one({"item_id":findId})
+        document = businessMongoData1.find_one({"item_id":findId})
         return document
     except Exception:
         return "id incorrect"
@@ -79,5 +79,5 @@ data = {
 #
 #
 # print updateData("")
-print businessMongoData2.count()
+print businessMongoData1.count()
 print getByRestaurant_id("HbUQ_3dlm3uCacmhTEMnuA")
