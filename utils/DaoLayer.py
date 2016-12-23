@@ -26,8 +26,12 @@ def getByRestaurant_id(findId):
         return "id incorrect"
 def search(keyword)
     list = []
+    count = 0
     for doc in businessMongoData2.find({"item_name":{'$regex':keyword}}):
         list.append(doc)
+        count +=1
+        if count>10:
+            break
     return list
 
 
