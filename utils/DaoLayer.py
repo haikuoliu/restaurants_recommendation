@@ -52,8 +52,8 @@ def updateData(user_id, target,value):
 
 
 
-s = getByUser_id("4U9kSBLuBDU391x6bxU-YA")
-print s
+# s = getByUser_id("4U9kSBLuBDU391x6bxU-YA")
+# print s
 
 
 # print getByUser_id("18kPq7GPye-YQ3LyKyAZPw")
