@@ -37,7 +37,8 @@ def updateData(user_id, target,value):
         return "update fail"
 
 
-print getByUser_id("4U9kSBLuBDU391x6bxU-YA")
+s = getByUser_id("4U9kSBLuBDU391x6bxU-YA")
+print s
 
 print ""
 
