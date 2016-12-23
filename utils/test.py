@@ -20,7 +20,7 @@ def getByRestaurant_id(findId):
     # the userColllection like the table which store the data of user
     try:
 #         document = businessMongoData1.find({"item_id":{$regex:findId,$options:"$i"}})
-        document = businessMongoData1.find_one({"item_id":{'$regex':findId}})
+        document = businessMongoData1.find({"item_id":{'$regex':findId}})
         return document
     except Exception:
         return "id incorrect"
@@ -65,12 +65,12 @@ def updateData(user_id, target,value):
 # print getByEmail("2@gmail.com")
 
 
-data = {
-    "password": "x",
-    "u'user_id": "xx",
-    "name": "n",
-    "email": "x"
-}
+# data = {
+#     "password": "x",
+#     "u'user_id": "xx",
+#     "name": "n",
+#     "email": "x"
+# }
 
 # print getByEmail("3@gmail.com")
 #
