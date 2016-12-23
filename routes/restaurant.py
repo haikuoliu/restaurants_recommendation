@@ -45,7 +45,7 @@ def recommend():
         # print items
         restaurant_infos = []
         for item in items:
-            item["items"][0]["id"]
+            print item["items"][0]["id"]
             restaurant_info = getByRestaurant_id(item["items"][0]["id"])
             restaurant_infos.append(restaurant_info)
             # print restaurant_info
