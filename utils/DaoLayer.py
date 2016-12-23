@@ -35,3 +35,16 @@ def updateData(user_id, target,value):
         return "update correct"
     except Exception:
         return "update fail"
+
+
+print getByUser_id("18kPq7GPye-YQ3LyKyAZPw")
+
+print ""
+
+print getByEmail("1@gmail.com")
+
+# print insertData("")
+#
+#
+#
+# print updateData("")
