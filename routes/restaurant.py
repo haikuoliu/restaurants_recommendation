@@ -3,7 +3,7 @@ import json
 from . import routes
 from utils.recommendation import *
 from utils.DaoLayer import *
-
+import math
 
 # http://0.0.0.0:8080/api/restaurant/recommend/
 @routes.route('/api/restaurant/recommend', methods=['GET', 'POST'])
@@ -40,7 +40,7 @@ def recommend():
         #         "overallRating": 5.0
         #     }
         # ]
-        items = getUser2ItemRecommendation(uid, 2)
+        items = getUser2ItemRecommendation(uid, 4)
         items = json.loads(items)["recommendedItems"]
         # print items
         restaurant_infos = []
@@ -63,8 +63,13 @@ def recommend():
                 "overallRating": tmp["overallRating"],
                 # "catagory": tmp["catagory"]
             }
+            restaurant_info["distance"] = math.sqrt(pow(restaurant_info["latitude"] - lat, 2) + pow(restaurant_info["longitude"] - lng,2))
             restaurant_infos.append(restaurant_info)
-            # print restaurant_info
+            # restaurant_info
+
+        def age(s):
+            return s['distance']
+        restaurant_infos = sorted(restaurant_infos, key=age)
         ret["restaurant_infos"] = restaurant_infos
         print ret
         return json.dumps(ret)

@@ -92,5 +92,5 @@ data = {
 #
 #
 # print updateData("")
-print businessMongoData2.count()
-print getByRestaurant_id("6KON3CR5ZEM5RMYKLPCFCW")
+# print businessMongoData2.count()
+# print getByRestaurant_id("6KON3CR5ZEM5RMYKLPCFCW")
