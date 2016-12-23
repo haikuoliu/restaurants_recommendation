@@ -64,6 +64,7 @@ def search():
         try:
             keyword = request.form['keyword']
             uid = request.form['uid']
+            print uid
             print keyword
             # recommend logic
             ret = {"status": True}
