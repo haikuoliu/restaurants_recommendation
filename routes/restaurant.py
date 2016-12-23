@@ -58,7 +58,8 @@ def recommend():
                 "latitude": tmp["latitude"],
                 "longitude": tmp["longitude"],
                 "picUrl": tmp["picUrl"],
-                "overallRating": tmp["overallRating"]
+                "overallRating": tmp["overallRating"],
+                "catagory": tmp["catagory"]
             }
             restaurant_infos.append(restaurant_info)
             # print restaurant_info
