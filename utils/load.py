@@ -17,3 +17,4 @@ for eachLine in fin:
     if count>100:
         print 'processing'
         count = 0
+print "finished"
