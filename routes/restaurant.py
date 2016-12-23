@@ -26,7 +26,7 @@ def recommend():
         #     restaurant_info = {}
         #     restaurant_infos.append(restaurant_info)
         ret = {"status": True}
-        if uid == "EMPTY_UID":
+        if uid == "empty_uid":
             ret["restaurant_infos"] = []
             return json.dumps(ret)
         restaurant_infos = [
@@ -119,7 +119,7 @@ def recommend_realtime():
             #     restaurant_info = {}
             #     restaurant_infos.append(restaurant_info)
             ret = {"status": True}
-            if uid == "EMPTY_UID":
+            if uid == "empty_uid":
                 ret["restaurant_info"] = {}
                 return json.dumps(ret)
             restaurant_info = {

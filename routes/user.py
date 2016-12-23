@@ -58,6 +58,8 @@ def user_login():
         try:
             email = request.form['email']
             password = request.form['password']
+            print email
+            print password
             db = get_db_connection()
             user_collection = db.user
             query_results = user_collection.find_one({"email": email, "password": password})
