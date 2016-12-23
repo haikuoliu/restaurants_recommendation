@@ -18,7 +18,7 @@ def getByUser_id(findId):
 def getByRestaurant_id(findId):
     # the userColllection like the table which store the data of user
     try:
-        document = businessMongoData1.find_one({"item_id":findId})
+        document = businessMongoData1.find_one({"item_id":{$regex:findId,$options:"$i"}})
         return document
     except Exception:
         return "id incorrect"
