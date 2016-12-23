@@ -63,6 +63,7 @@ def search():
     if request.method == 'POST':
         try:
             keyword = request.form['keyword']
+            uid = request.form['uid']
             print keyword
             # recommend logic
             ret = {"status": True}

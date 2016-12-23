@@ -81,21 +81,33 @@ def getTaste(uid):
         .map(lambda r: (r, 1)).reduceByKey(add).takeOrdered(50, key=lambda r: -r[1])
     end_time = time.time()
     print "Time Cost: %.2fs"%(end_time - start_time)
+    res = {}
+    res["recommend"] = recomd
+    res["tag"] = taste
+    res["uid"] = uid
+    f = open('cache.jl', "a")
+    f.write(json.dumps(res))
+    f.write('\n')
+    f.flush()
+    f.close()
     return recomd, users, taste
 
 
 # with open('cache.jl', "a") as f:
-# 	for i in range(100,104):
-# 		print "Start Calculation On %d"%i
-#         r,u,t = getTaste(i)
-#         f.write( json.dumps( [i, r, u, t] ) )
-#         f.write('\n')
-#         f.flush()
+for i in range(1,200):
+    print "Start Calculation On %d"%i
+    getTaste(i)
+    # r,u,t = getTaste(i)
+    # f.write( json.dumps( [i, r, u, t] ) )
+    # print r
+    # f.write('\n')
+    # f.flush()
+
 # f.close()
 
-with open('cache.jl', "a") as f:
-    r,u,t = getTaste(101)
-    f.write( json.dumps( [101, r, u, t] ) )
-    f.write('\n')
-    f.flush()
-f.close()
+# with open('cache.jl', "a") as f:
+#     r,u,t = getTaste(101)
+#     f.write( json.dumps( [101, r, u, t] ) )
+#     f.write('\n')
+#     f.flush()
+# f.close()
