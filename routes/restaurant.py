@@ -41,7 +41,7 @@ def recommend():
         # ]
         items = getUser2ItemRecommendation(uid, 2)
         items = json.loads(items)["recommendedItems"]
-        # print items
+        print items
         restaurant_infos = []
         for item in items:
             print item
@@ -49,7 +49,7 @@ def recommend():
             restaurant_infos.append(restaurant_info)
             # print restaurant_info
         ret["restaurant_infos"] = restaurant_infos
-        # print ret
+        print ret
         return json.dumps(ret)
     except Exception, e:
         print e
