@@ -12,19 +12,9 @@ def recommend():
         lat = request.form['latitude']
         lng = request.form['longitude']
         uid = request.form['uid']
-        print lat
-        print lng
-        print uid
-        # db = get_db_connection()
-        # restaurant_collection = db.restaurant
-        # query_results = restaurant_collection.find_one({"rid": rid})
-        # get several rids here by recommend algorithm.
-
-
-        # for rid in rids:
-        #     # search in db and get detailed info of restaurant
-        #     restaurant_info = {}
-        #     restaurant_infos.append(restaurant_info)
+        # print lat
+        # print lng
+        # print uid
         ret = {"status": True}
         if uid == "empty_uid":
             ret["restaurant_infos"] = []
@@ -50,15 +40,16 @@ def recommend():
         #     }
         # ]
         items = getUser2ItemRecommendation(uid, 2)
-        items = json.loads(items)
+        items = json.loads(items)["recommendedItems"]
+        # print items
         restaurant_infos = []
         for item in items:
-            restaurant_info = getByRestaurant_id(item)
-            restaurant_infos.append(restaurant_info)
             print item
-            print restaurant_info
+            restaurant_info = getByRestaurant_id(item["items"][0]["id"])
+            restaurant_infos.append(restaurant_info)
+            # print restaurant_info
         ret["restaurant_infos"] = restaurant_infos
-        print ret
+        # print ret
         return json.dumps(ret)
     except Exception, e:
         print e
