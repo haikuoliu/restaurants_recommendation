@@ -42,7 +42,7 @@ print s
 
 print ""
 
-print getByEmail("1@gmail.com")
+print getByEmail("3@gmail.com")
 
 # print insertData("")
 #
