@@ -82,4 +82,4 @@ data = {
 #
 # print updateData("")
 # print businessMongoData1.count()
-# print getByRestaurant_id("rRvUF3c4vxksTOaGfyx5jA")
+print getByRestaurant_id("6KON3CR5ZEM5RMYKLPCFCW")
