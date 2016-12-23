@@ -28,9 +28,15 @@ def recommend():
                     "overallRating": tmp["overallRating"],
                 }
                 restaurant_infos.append(restaurant_info)
+                restaurant_info["distance"] = math.sqrt(
+                    pow(restaurant_info["latitude"] - lat, 2) + pow(restaurant_info["longitude"] - lng, 2))
+            def age(s):
+                return s['distance']
+            restaurant_infos = sorted(restaurant_infos, key=age)
             ret["restaurant_infos"] = restaurant_infos[0:5]
             print ret
             return json.dumps(ret)
+
         print lat
         print lng
         # print uid
