@@ -8,7 +8,7 @@ businessMongoData3 = db.businessMongoData3
 c1 = businessMongoData2.count()
 c2 = userMongoData.count()
 c3 = userTag.count()
-c4 = businessMongData3.count()
+c4 = businessMongoData3.count()
 print "the number of businessMongoData: "
 print c1
 print '\n'
