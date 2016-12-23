@@ -32,7 +32,7 @@ def search_dao(keyword):
     for doc in businessMongoData4.find({"item_name":{'$regex':keyword}}):
         list.append(doc)
         count +=1
-        if count>10:
+        if count>50:
             break
     return list
 
