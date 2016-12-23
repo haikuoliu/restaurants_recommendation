@@ -5,10 +5,10 @@
 # db = client.database_name
 # userCollection = db.userCollection
 from bson.objectid import ObjectId
-def getById(id):
+def getByUser_id(user_id):
     # the userColllection like the table which store the data of user
     try:
-        document = userCollection.find_one({'_id': ObjectId(id)})
+        document = userCollection.find_one({'user_id':user_id})
         return document
     except Exception:
         return "id incorrect"
@@ -27,9 +27,9 @@ def insertData(data):
     except Exception:
         return "insert fail"
 
-def updateData(id, target,value):
+def updateData(user_id, target,value):
     # target is the name of attribute and value is the assigned value
-    update = userCollection.find_one({'_id': ObjectId(id)})
+    update = userCollection.find_one({'user_id': user_id})
     try:
         update[target] = value
         return "update correct"
