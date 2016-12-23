@@ -50,7 +50,9 @@ def recommend():
                 continue
             print item["items"][0]["id"]
             tmp = getByRestaurant_id(item["items"][0]["id"])
+            print "~~~~~~~~~~~"
             print tmp
+            print "~~~~~~~~~~~"
             restaurant_info = {
                 "rid": tmp["item_id"],
                 "name": tmp["item_name"],
