@@ -5,7 +5,7 @@ client = MongoClient()
 # client set up
 db = client.test
 userMongoData = db.userMongoData
-businessMongoData1 = db.businessMongoData1
+businessMongoData1 = db.businessMongoData2
 
 from bson.objectid import ObjectId
 def getByUser_id(findId):
