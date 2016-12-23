@@ -14,6 +14,8 @@ def getByUser_id(findId):
         return "id incorrect"
 def getByEmail(email):
     # the userColllection like the table which store the data of user
+    print "findtheemail  "
+    print email
     try:
         document = userCollection.find_one({"email": email})
         return document
