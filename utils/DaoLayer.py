@@ -4,18 +4,21 @@ client = MongoClient()
 # client set up
 db = client.test
 userCollection = db.userMongoData
+
 from bson.objectid import ObjectId
-def getByUser_id(user_id):
+def getByUser_id(findId):
     # the userColllection like the table which store the data of user
     try:
-        document = userCollection.find_one({'user_id':user_id})
+        document = userCollection.find_one({"user_id":findId})
         return document
     except Exception:
         return "id incorrect"
 def getByEmail(email):
     # the userColllection like the table which store the data of user
+    print "findtheemail  "
+    print email
     try:
-        document = userCollection.find_one({'email': email})
+        document = userCollection.find_one({"email": email})
         return document
     except Exception:
         return "Email incorrect"
@@ -29,7 +32,7 @@ def insertData(data):
 
 def updateData(user_id, target,value):
     # target is the name of attribute and value is the assigned value
-    update = userCollection.find_one({'user_id': user_id})
+    update = userCollection.find_one({"user_id": user_id})
     try:
         update[target] = value
         return "update correct"
@@ -38,11 +41,16 @@ def updateData(user_id, target,value):
 
 
 
+s = getByUser_id("4U9kSBLuBDU391x6bxU-YA")
+print s
+
+
 # print getByUser_id("18kPq7GPye-YQ3LyKyAZPw")
 #
 # print ""
 #
 # print getByEmail("2@gmail.com")
+
 
 data = {
     "password": "x",
@@ -50,6 +58,9 @@ data = {
     "name": "n",
     "email": "x"
 }
+
+print getByEmail("3@gmail.com")
+
 
 print insertData(data)
 print getByUser_id("xx")
