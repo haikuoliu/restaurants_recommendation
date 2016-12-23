@@ -86,8 +86,8 @@ def search():
             keyword = request.form['keyword']
             lat = request.form['latitude']
             lng = request.form['longitude']
-            uid = request.form['uid']
-            print uid
+            # uid = request.form['uid']
+            # print uid
             print keyword
             # recommend logic
             ret = {"status": True}
