@@ -1,9 +1,9 @@
 # for userCollection:
-# from pymongo import MongoClient
-# client = MongoClient()
+from pymongo import MongoClient
+client = MongoClient()
 # client set up
-# db = client.database_name
-# userCollection = db.userCollection
+db = client.database_name
+userCollection = db.userMongoData
 from bson.objectid import ObjectId
 def getByUser_id(user_id):
     # the userColllection like the table which store the data of user
