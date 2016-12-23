@@ -1,3 +1,4 @@
+from pymongo import MongoClient
 client = MongoClient()
 db = client.test
 userTag = db.userTag
