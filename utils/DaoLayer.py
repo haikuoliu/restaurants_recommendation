@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # for userCollection:
 from pymongo import MongoClient
 client = MongoClient()
