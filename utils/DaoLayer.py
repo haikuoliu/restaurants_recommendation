@@ -9,7 +9,6 @@ def getByUser_id(findId):
     # the userColllection like the table which store the data of user
     try:
         document = userMongoData.find_one({"user_id":findId})
-        print document
         return document
     except Exception:
         return "id incorrect"
