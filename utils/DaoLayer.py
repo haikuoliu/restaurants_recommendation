@@ -26,7 +26,7 @@ def getByRestaurant_id(findId):
         return "id incorrect"
 
 
-def search(keyword):
+def search_dao(keyword):
     list = []
     count = 0
     for doc in businessMongoData2.find({"item_name":{'$regex':keyword}}):

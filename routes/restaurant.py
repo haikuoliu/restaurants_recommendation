@@ -105,7 +105,7 @@ def search():
             #     }
             # ]
             restaurant_infos = []
-            rows = search(keyword)
+            rows = search_dao(keyword)
             for tmp in rows:
                 restaurant_info = {
                     "rid": tmp["item_id"],
