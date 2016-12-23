@@ -70,12 +70,14 @@ data = {
     "email": "x"
 }
 
-print getByEmail("3@gmail.com")
-
-
-print insertData(data)
-print getByUser_id("xx")
+# print getByEmail("3@gmail.com")
+#
+#
+# print insertData(data)
+# print getByUser_id("xx")
 #
 #
 #
 # print updateData("")
+print businessMongoData2.count()
+print getByRestaurant_id("HbUQ_3dlm3uCacmhTEMnuA")
