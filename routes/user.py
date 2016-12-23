@@ -75,6 +75,12 @@ def user_login():
                 ret = {"status": True}
                 ret["tag"] = []
                 ret["search_history"] = []
+                tmp = user_profile
+                user_profile = {
+                    "uid": tmp["user_id"],
+                    "username": tmp["name"],
+                    "password": tmp["password"],
+                }
                 ret["user_profile"] = user_profile
             print ret
             return json.dumps(ret)
