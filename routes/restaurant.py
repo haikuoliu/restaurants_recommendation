@@ -45,11 +45,12 @@ def recommend():
         # print items
         restaurant_infos = []
         for item in items:
-            print item
+            # print item
             if item is None:
                 continue
             print item["items"][0]["id"]
             tmp = getByRestaurant_id(item["items"][0]["id"])
+            print tmp
             restaurant_info = {
                 "rid": tmp["item_id"],
                 "name": tmp["item_name"],
