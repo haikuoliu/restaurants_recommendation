@@ -24,6 +24,11 @@ def getByRestaurant_id(findId):
         return document
     except Exception:
         return "id incorrect"
+def search(keyword)
+    list = []
+    for doc in businessMongoData2.find({"item_name":{'$regex':keyword}}):
+        list.append(doc)
+    return list
 
 
 def getByEmail(email):
