@@ -52,10 +52,10 @@ def recommend():
         rids = getUser2ItemRecommendation(uid, 2)
         restaurant_infos = []
         for rid in rids:
-            print rid
-            print restaurant_info
             restaurant_info = getByRestaurant_id(rid)
             restaurant_infos.append(restaurant_info)
+            print rid
+            print restaurant_info
         ret["restaurant_infos"] = restaurant_infos
         print ret
         return json.dumps(ret)
