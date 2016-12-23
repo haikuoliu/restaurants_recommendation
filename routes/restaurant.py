@@ -2,6 +2,7 @@ from utils.crossdomain import *
 import json
 from . import routes
 from utils.recommendation import *
+from utils.DaoLayer import *
 
 # http://0.0.0.0:8080/api/restaurant/recommend/
 @routes.route('/api/restaurant/recommend', methods=['GET', 'POST'])
@@ -48,7 +49,11 @@ def recommend():
         #         "overallRating": 5.0
         #     }
         # ]
-        restaurant_infos = getUser2ItemRecommendation(uid, 5)
+        rids = getUser2ItemRecommendation(uid, 2)
+        restaurant_infos = []
+        for rid in rids:
+            restaurant_info = getByRestaurant_id(rid)
+            restaurant_infos.append(restaurant_info)
         ret["restaurant_infos"] = restaurant_infos
         print ret
         return json.dumps(ret)
