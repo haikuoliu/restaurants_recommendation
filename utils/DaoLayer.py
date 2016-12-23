@@ -4,6 +4,7 @@ client = MongoClient()
 # client set up
 db = client.test
 userMongoData = db.userMongoData
+businessMongoData2 = db.businessMongoData2
 
 from bson.objectid import ObjectId
 def getByUser_id(findId):
@@ -13,6 +14,16 @@ def getByUser_id(findId):
         return document
     except Exception:
         return "id incorrect"
+
+def getByRestaurant_id(findId):
+    # the userColllection like the table which store the data of user
+    try:
+        document = businessMongoData2.find_one({"item_id":findId})
+        return document
+    except Exception:
+        return "id incorrect"
+
+
 def getByEmail(email):
     # the userColllection like the table which store the data of user
 #     print "findtheemail  "

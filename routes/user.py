@@ -2,6 +2,7 @@ from utils.crossdomain import *
 import json
 from . import routes
 from utils.connect_db import *
+from utils.DaoLayer import *
 
 
 # Register a new user.
@@ -17,29 +18,27 @@ def user_register():
             print username
             print email
             print password
-            user = {
-                    "username": username,
-                    "email": email,
-                    "password": password
+            data = {
+                "password": password,
+                "user_id": email,
+                "name": username,
+                "email": email
             }
-            # db = get_db_connection()
-            # user_collection = db.user
-            # return uid and profile.
-            # user_collection.insert_one(user).inserted_id
-
-            is_exists = False
-            if is_exists:
+            user_profile = getByEmail(email)
+            if user_profile != None:
                 ret = {"status": False}
             else:
-                user_profile = {
-                    "uid": "123",
-                    "username": "liuhaikuo",
-                    "password": "pwd",
-                    "tag": ["food catagory1", "food catagory2"],
-                    "search_history": ["keyword1", "keyword2"]
-                }
+                # user_profile = {
+                #     "uid": "123",
+                #     "username": "liuhaikuo",
+                #     "password": "pwd",
+                #     "tag": ["food catagory1", "food catagory2"],
+                #     "search_history": ["keyword1", "keyword2"]
+                # }
+                insertData(data)
                 ret = {"status": True}
-                ret["user_profile"] = user_profile
+                data.pop("_id")
+                ret["user_profile"] = data
             print ret
             return json.dumps(ret)
 
@@ -60,22 +59,23 @@ def user_login():
             password = request.form['password']
             print email
             print password
-            db = get_db_connection()
-            user_collection = db.user
-            query_results = user_collection.find_one({"email": email, "password": password})
-            is_success = True
-            if is_success:
-                user_profile = {
-                    "uid": "123",
-                    "username": "liuhaikuo",
-                    "password": "pwd",
-                    "tag": ["food catagory1", "food catagory2"],
-                    "search_history": ["keyword1", "keyword2"]
-                }
-                ret = {"status": True}
-                ret["user_profile"] = user_profile
-            else:
+            user_profile = getByEmail(email)
+            print user_profile["password"]
+            if user_profile == None or user_profile["password"] != password:
                 ret = {"status": False}
+            else:
+                user_profile.pop("_id")
+                # user_profile = {
+                #     "uid": "123",
+                #     "username": "liuhaikuo",
+                #     "password": "pwd",
+                #     "tag": ["food catagory1", "food catagory2"],
+                #     "search_history": ["keyword1", "keyword2"]
+                # }
+                ret = {"status": True}
+                ret["tag"] = []
+                ret["search_history"] = []
+                ret["user_profile"] = user_profile
             print ret
             return json.dumps(ret)
         except Exception, e:

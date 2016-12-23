@@ -1,7 +1,7 @@
 from utils.crossdomain import *
 import json
 from . import routes
-
+from utils.recommendation import *
 
 # http://0.0.0.0:8080/api/restaurant/recommend/
 @routes.route('/api/restaurant/recommend', methods=['GET', 'POST'])
@@ -19,8 +19,7 @@ def recommend():
         # query_results = restaurant_collection.find_one({"rid": rid})
         # get several rids here by recommend algorithm.
 
-        rids = [1, 2, 3]
-        restaurant_infos = []
+
         # for rid in rids:
         #     # search in db and get detailed info of restaurant
         #     restaurant_info = {}
@@ -29,26 +28,27 @@ def recommend():
         if uid == "empty_uid":
             ret["restaurant_infos"] = []
             return json.dumps(ret)
-        restaurant_infos = [
-            {
-                "rid": "reyes-deli-and-grocery-brooklyn",
-                "name": "Reyes Deli & Grocery",
-                "address": "addr A",
-                "latitude": 40.75033,
-                "longitude": -73.98531,
-                "picUrl": "https://www.omnihotels.com/-/media/images/hotels/homrst/restaurants/homrst-omni-homestead-resort-jeffersons-restaurant-2.jpg",
-                "overallRating": 4.5
-            },
-            {
-                "rid": "coffee-project-new-york-new-york",
-                "name": "Coffee Project New York",
-                "address": "local B",
-                "latitude": 40.7274823,
-                "longitude": -73.9902387,
-                "picUrl": "http://assets.sheratonseattle.com/lps/assets/u/she460re-119596-Daily-Grill-Restaurant.jpg",
-                "overallRating": 5.0
-            }
-        ]
+        # restaurant_infos = [
+        #     {
+        #         "rid": "reyes-deli-and-grocery-brooklyn",
+        #         "name": "Reyes Deli & Grocery",
+        #         "address": "addr A",
+        #         "latitude": 40.75033,
+        #         "longitude": -73.98531,
+        #         "picUrl": "https://www.omnihotels.com/-/media/images/hotels/homrst/restaurants/homrst-omni-homestead-resort-jeffersons-restaurant-2.jpg",
+        #         "overallRating": 4.5
+        #     },
+        #     {
+        #         "rid": "coffee-project-new-york-new-york",
+        #         "name": "Coffee Project New York",
+        #         "address": "local B",
+        #         "latitude": 40.7274823,
+        #         "longitude": -73.9902387,
+        #         "picUrl": "http://assets.sheratonseattle.com/lps/assets/u/she460re-119596-Daily-Grill-Restaurant.jpg",
+        #         "overallRating": 5.0
+        #     }
+        # ]
+        restaurant_infos = getUser2ItemRecommendation(uid, 5)
         ret["restaurant_infos"] = restaurant_infos
         print ret
         return json.dumps(ret)
