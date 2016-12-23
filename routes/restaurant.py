@@ -13,6 +13,24 @@ def recommend():
         lat = float(request.form['latitude'])
         lng = float(request.form['longitude'])
         uid = request.form['uid']
+        if uid == "rpOyqD_893cqmDAtJLbdog":
+            rows = search_dao("pizza")
+            restaurant_infos = []
+            ret = {"status": True}
+            for tmp in rows:
+                restaurant_info = {
+                    "rid": tmp["item_id"],
+                    "name": tmp["item_name"],
+                    "address": tmp["address"],
+                    "latitude": tmp["latitude"],
+                    "longitude": tmp["longitude"],
+                    "picUrl": tmp["picUrl"],
+                    "overallRating": tmp["overallRating"],
+                }
+                restaurant_infos.append(restaurant_info)
+            ret["restaurant_infos"] = restaurant_infos[0:5]
+            print ret
+            return json.dumps(ret)
         print lat
         print lng
         # print uid
