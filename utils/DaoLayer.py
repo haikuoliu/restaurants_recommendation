@@ -2,7 +2,7 @@
 from pymongo import MongoClient
 client = MongoClient()
 # client set up
-db = client.database_name
+db = client.test
 userCollection = db.userMongoData
 from bson.objectid import ObjectId
 def getByUser_id(user_id):
@@ -37,13 +37,22 @@ def updateData(user_id, target,value):
         return "update fail"
 
 
-print getByUser_id("18kPq7GPye-YQ3LyKyAZPw")
 
-print ""
+# print getByUser_id("18kPq7GPye-YQ3LyKyAZPw")
+#
+# print ""
+#
+# print getByEmail("2@gmail.com")
 
-print getByEmail("1@gmail.com")
+data = {
+    "password": "x",
+    "u'user_id": "xx",
+    "name": "n",
+    "email": "x"
+}
 
-# print insertData("")
+print insertData(data)
+print getByUser_id("xx")
 #
 #
 #
