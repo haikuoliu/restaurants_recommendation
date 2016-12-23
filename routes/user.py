@@ -20,8 +20,8 @@ def user_register():
             print password
             data = {
                 "password": password,
-                "user_id": email,
-                "name": username,
+                "uid": email,
+                "username": username,
                 "email": email
             }
             user_profile = getByEmail(email)
