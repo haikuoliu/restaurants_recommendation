@@ -10,8 +10,8 @@ import math
 @crossdomain(origin='*')
 def recommend():
     try:
-        lat = request.form['latitude']
-        lng = request.form['longitude']
+        lat = float(request.form['latitude'])
+        lng = float(request.form['longitude'])
         uid = request.form['uid']
         # print lat
         # print lng
