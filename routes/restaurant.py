@@ -13,8 +13,8 @@ def recommend():
         lat = float(request.form['latitude'])
         lng = float(request.form['longitude'])
         uid = request.form['uid']
-        # print lat
-        # print lng
+        print lat
+        print lng
         # print uid
         ret = {"status": True}
         if uid == "empty_uid":
