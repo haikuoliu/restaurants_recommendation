@@ -45,8 +45,20 @@ def recommend():
         # print items
         restaurant_infos = []
         for item in items:
+            print item
+            if item is None:
+                continue
             print item["items"][0]["id"]
-            restaurant_info = getByRestaurant_id(item["items"][0]["id"])
+            tmp = getByRestaurant_id(item["items"][0]["id"])
+            restaurant_info = {
+                "rid": tmp["item_id"],
+                "name": tmp["item_name"],
+                "address": tmp["address"],
+                "latitude": tmp["latitude"],
+                "longitude": tmp["longitude"],
+                "picUrl": tmp["picUrl"],
+                "overallRating": tmp["overallRating"]
+            }
             restaurant_infos.append(restaurant_info)
             # print restaurant_info
         ret["restaurant_infos"] = restaurant_infos
@@ -86,7 +98,7 @@ def search():
                     "longitude": -73.9902387,
                     "picUrl": "http://assets.sheratonseattle.com/lps/assets/u/she460re-119596-Daily-Grill-Restaurant.jpg",
                     "overallRating": 5.0
-            }
+                }
             ]
             ret["restaurant_infos"] = restaurant_infos
             print ret
@@ -97,44 +109,44 @@ def search():
             return json.dumps(ret)
 
 
-@routes.route('/api/restaurant/recommend_realtime', methods=['GET', 'POST'])
-@crossdomain(origin='*')
-def recommend_realtime():
-    try:
-        if request.method == 'POST':
-            lat = request.form['latitude']
-            lng = request.form['longitude']
-            uid = request.form['uid']
-            print lat
-            print lng
-            print uid
-            # db = get_db_connection()
-            # restaurant_collection = db.restaurant
-            # query_results = restaurant_collection.find_one({"rid": rid})
-            # get several rids here by recommend algorithm.
-
-            rids = [1, 2, 3]
-            # for rid in rids:
-            #     # search in db and get detailed info of restaurant
-            #     restaurant_info = {}
-            #     restaurant_infos.append(restaurant_info)
-            ret = {"status": True}
-            if uid == "empty_uid":
-                ret["restaurant_info"] = {}
-                return json.dumps(ret)
-            restaurant_info = {
-                "rid": "coffee-project-new-york-new-york",
-                "name": "Coffee Project New York",
-                "address": "local B",
-                "latitude": 40.7274823,
-                "longitude": -73.9902387,
-                "picUrl": "http://assets.sheratonseattle.com/lps/assets/u/she460re-119596-Daily-Grill-Restaurant.jpg",
-                "overallRating": 5.0
-            }
-            ret["restaurant_info"] = restaurant_info
-            print ret
-            return json.dumps(ret)
-    except Exception, e:
-        print e
-        ret = {"status": False}
-        return json.dumps(ret)
+# @routes.route('/api/restaurant/recommend_realtime', methods=['GET', 'POST'])
+# @crossdomain(origin='*')
+# def recommend_realtime():
+#     try:
+#         if request.method == 'POST':
+#             lat = request.form['latitude']
+#             lng = request.form['longitude']
+#             uid = request.form['uid']
+#             print lat
+#             print lng
+#             print uid
+#             # db = get_db_connection()
+#             # restaurant_collection = db.restaurant
+#             # query_results = restaurant_collection.find_one({"rid": rid})
+#             # get several rids here by recommend algorithm.
+#
+#             rids = [1, 2, 3]
+#             # for rid in rids:
+#             #     # search in db and get detailed info of restaurant
+#             #     restaurant_info = {}
+#             #     restaurant_infos.append(restaurant_info)
+#             ret = {"status": True}
+#             if uid == "empty_uid":
+#                 ret["restaurant_info"] = {}
+#                 return json.dumps(ret)
+#             restaurant_info = {
+#                 "rid": "coffee-project-new-york-new-york",
+#                 "name": "Coffee Project New York",
+#                 "address": "local B",
+#                 "latitude": 40.7274823,
+#                 "longitude": -73.9902387,
+#                 "picUrl": "http://assets.sheratonseattle.com/lps/assets/u/she460re-119596-Daily-Grill-Restaurant.jpg",
+#                 "overallRating": 5.0
+#             }
+#             ret["restaurant_info"] = restaurant_info
+#             print ret
+#             return json.dumps(ret)
+#     except Exception, e:
+#         print e
+#         ret = {"status": False}
+#         return json.dumps(ret)
