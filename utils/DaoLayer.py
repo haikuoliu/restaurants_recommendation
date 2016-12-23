@@ -2,7 +2,7 @@
 from pymongo import MongoClient
 client = MongoClient()
 # client set up
-db = client.database_name
+db = client.test
 userMongoData = db.userMongoData
 from bson.objectid import ObjectId
 def getByUser_id(findId):
