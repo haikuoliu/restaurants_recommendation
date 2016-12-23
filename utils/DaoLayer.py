@@ -15,7 +15,7 @@ def getByUser_id(findId):
 def getByEmail(email):
     # the userColllection like the table which store the data of user
     try:
-        document = userCollection.find_one({'email': email})
+        document = userCollection.find_one({"email": email})
         return document
     except Exception:
         return "Email incorrect"
@@ -29,7 +29,7 @@ def insertData(data):
 
 def updateData(user_id, target,value):
     # target is the name of attribute and value is the assigned value
-    update = userCollection.find_one({'user_id': user_id})
+    update = userCollection.find_one({"user_id": user_id})
     try:
         update[target] = value
         return "update correct"
