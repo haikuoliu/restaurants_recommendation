@@ -2,8 +2,8 @@ import json
 from pymongo import MongoClient
 client = MongoClient()
 db = client.test
-businessMongoData4 = db.businessMongoData4
-fin = open('/home/ec2-user/restaurants_recommendation/data/preBusinessMongoData.json','r')
+preUserMongoData = db.preUserMongoData
+fin = open('/home/ec2-user/restaurants_recommendation/data/preUserMongoData.json','r')
 count = 0
 for eachLine in fin:
     line = eachLine.strip().decode('utf-8')
@@ -13,7 +13,7 @@ for eachLine in fin:
         js = json.loads(line)
     except Exception, e:
         continue
-    businessMongoData4.insert_one(js)
+    preUserMongoData.insert_one(js)
     if count>100:
         print 'processing'
         count = 0
