@@ -4,7 +4,7 @@ from pymongo import MongoClient
 client = MongoClient()
 # client set up
 db = client.test
-userMongoData = db.userMongoData
+userMongoData = db.perUserMongoData2
 businessMongoData4 = db.businessMongoData4
 
 from bson.objectid import ObjectId
